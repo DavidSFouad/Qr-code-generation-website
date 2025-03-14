@@ -13,6 +13,80 @@ body {
     padding-top: 60px; 
 }
 
+/* Ensure the body has the same background color as the homepage */
+body {
+    background-color: #0f172a; /* Dark background consistent with homepage */
+    color: #f8fafc; /* Light text color */
+    margin: 0;
+    padding-top: 60px; /* Space for fixed navbar */
+    font-family: Arial, sans-serif;
+}
+
+/* Center the container horizontally */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the container */
+    padding: 40px 20px; /* Adds spacing around content */
+}
+
+/* Space between form components */
+.form-group {
+    margin-bottom: 20px; /* Vertical spacing between label-input pairs */
+}
+
+/* Style labels and inputs consistently */
+label {
+    display: block;
+    color: #f8fafc;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    max-width: 400px; /* Consistent input width */
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #1e293b; /* Dark input background */
+    color: #f8fafc;
+    border: 1px solid #475569;
+    border-radius: 5px;
+}
+
+/* Center the button and add spacing */
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Space above the button */
+}
+
+/* Button styling (assuming it matches homepage) */
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #38bdf8;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* QR code section styling */
+#qr-code {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#qrImage {
+    max-width: 100%;
+    height: auto;
+}
+
+#downloadLink {
+    display: block;
+    margin-top: 10px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+
 /* QR Code Pattern Background */
 .qr-pattern {
     position: fixed;
@@ -616,21 +690,24 @@ body {
 }
 
 .footer {
-background-color: #0f172a;
-color: #f8fafc;
-padding: 40px 0;
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 40px 0;
+    width: 100%; /* Ensure it spans full width */
 }
 
 .footer-container {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-
 .footer-section {
-flex: 1;
-min-width: 200px;
-margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+.footer iframe {
+    display: block; /* Removes any inline spacing */
 }
 
 .footer-section h3 {

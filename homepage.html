@@ -8,7 +8,7 @@
     </head>
     <body>
         <!-- Navigation Bar -->
-        <div id="navbar"></div>
+        <iframe src="navbar.html" frameborder="0" style="width: 100%; height: 60px; position: fixed; top: 0; left: 0; z-index: 1000;"></iframe>
     
         <!-- QR Code Pattern Background -->
         <div class="qr-pattern"></div>
@@ -183,52 +183,24 @@
             </div>
         </section>
     
-        <div id="footer"></div>
-    
+<!-- Replace the current footer iframe with this -->
+<iframe src="footer.html" frameborder="0" style="width: 100%; height: auto; border: none; overflow: hidden;" id="footer-iframe"></iframe>    
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Load navbar
-                fetch('navbar.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById('navbar').innerHTML = data;
-                    });
-        
-                // Load footer
-                fetch('footer.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById('footer').innerHTML = data;
-                    });
-            });
-        </script>
-        
-        <script>
-            // Hamburger menu functionality
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-    
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-    
-            // Generate QR code visualization for hero section
             document.addEventListener('DOMContentLoaded', function() {
                 const qrShape = document.getElementById('qrShape');
                 const totalBits = 7 * 7;
-                
+        
                 // Clear existing content
                 qrShape.innerHTML = '';
-                
+        
                 // Create static QR-like pattern (7x7 grid = 49 bits)
                 for (let i = 0; i < totalBits; i++) {
                     const bit = document.createElement('div');
                     bit.className = 'qr-bit';
-                    
+        
                     // Add animation delay for sequential appearance
                     bit.style.animationDelay = (i * 0.03) + 's';
-                    
+        
                     // Create corner squares (position detection patterns)
                     if (
                         // Top-left corner
@@ -240,13 +212,13 @@
                     ) {
                         bit.classList.add('corner');
                     }
-                    
+        
                     qrShape.appendChild(bit);
                 }
-                
+        
                 // Scroll animations
                 const animateElements = document.querySelectorAll('.animate-on-scroll');
-                
+        
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -256,7 +228,7 @@
                 }, {
                     threshold: 0.1
                 });
-                
+        
                 animateElements.forEach(element => {
                     observer.observe(element);
                 });

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL QR Code Generator - QR Genius</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+</head>
+<body>
+    <iframe src="navbar.html" frameborder="0" width="100%" style="position: fixed; top: 0; left: 0; z-index: 1000;"></iframe>
+    <div class="qr-pattern"></div>
+    <div class="container">
+        <h1 class="section-title">URL QR Code Generator</h1>
+        <div class="form-group">
+            <label for="inputText">Enter URL:</label>
+            <input type="text" id="inputText" placeholder="Enter URL or text" required>
+        </div>
+        <div class="form-group">
+            <label for="width">Width (px):</label>
+            <input type="number" id="width" value="200" min="100" required>
+        </div>
+        <div class="form-group">
+            <label for="height">Height (px):</label>
+            <input type="number" id="height" value="200" min="100" required>
+        </div>
+        <div class="button-container">
+            <button class="btn-primary" onclick="generateQRCode()">Generate QR Code</button>
+        </div>
+        <div id="qr-code">
+            <img id="qrImage" src="" alt="QR Code" />
+            <a id="downloadLink" href="#" download="qr-code.png">Download QR Code</a>
+        </div>
+    </div>
+    <iframe src="footer.html" frameborder="0" width="100%" height="200px" style="position: relative;"></iframe>
+    <script>
+        function generateQRCode() {
+            // Get input values
+            const inputText = document.getElementById('inputText').value;
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+
+            // Validate inputs
+            if (!inputText || width < 100 || height < 100) {
+                alert("Please provide valid input for all fields.");
+                return;
+            }
+
+            // Generate QR code
+            QRCode.toDataURL(inputText, { width: width, height: height }, function (err, url) {
+                if (err) {
+                    console.error(err);
+                    alert("An error occurred while generating the QR code.");
+                    return;
+                }
+
+                // Set the QR code image
+                const qrImage = document.getElementById('qrImage');
+                qrImage.src = url;
+
+                // Show the QR code and the download link
+                const qrCodeDiv = document.getElementById('qr-code');
+                qrCodeDiv.style.display = 'block';
+
+                // Set the download link
+                const downloadLink = document.getElementById('downloadLink');
+                downloadLink.href = url;
+            });
+        }
+    </script>
+</body>
+</html>
