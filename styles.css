@@ -757,3 +757,221 @@ align-items: center;
 text-align: center;
 }
 }
+
+/* Form group spacing */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    color: #f8fafc;
+    margin-bottom: 5px;
+}
+
+/* Input styling */
+input[type="text"], input[type="tel"], input[type="email"], input[type="url"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #475569;
+    border-radius: 5px;
+}
+
+/* Button container */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Primary button */
+.btn-primary {
+    background: linear-gradient(45deg, #2563eb, #4f46e5);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(79, 70, 229, 0.5);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.6);
+}
+
+/* Secondary button */
+.btn-secondary {
+    background: transparent;
+    color: #e2e8f0;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid #475569;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    border-color: #818cf8;
+    background: rgba(129, 140, 248, 0.1);
+}
+
+/* QR code section */
+#qr-code {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#placeHolder {
+    margin-bottom: 10px;
+}
+
+#downloadLink {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Section title */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #f8fafc;
+}
+
+/* QR pattern background */
+.qr-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.06;
+    background-image: radial-gradient(#ffffff 1px, transparent 1px),
+                     radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}
+
+/* Content wrapper for form and QR code */
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(30, 41, 59, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .form-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .qr-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        #placeHolder {
+            width: 200px; /* Smaller QR code size */
+            height: 200px;
+            margin: 20px auto;
+        }
+
+        #qr-code {
+            display: none; /* Hidden initially */
+        }
+
+        #downloadLink {
+            display: block;
+            margin-top: 10px;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        /* Form group spacing */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            color: #f8fafc;
+            margin-bottom: 5px;
+        }
+
+        /* Input styling */
+        input[type="text"], input[type="tel"], input[type="email"], input[type="url"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #1e293b;
+            color: #f8fafc;
+            border: 1px solid #475569;
+            border-radius: 5px;
+        }
+
+        /* Button container */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Primary button */
+        .btn-primary {
+            background: linear-gradient(45deg, #2563eb, #4f46e5);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.6);
+        }
+
+        /* Secondary button */
+        .btn-secondary {
+            background: transparent;
+            color: #e2e8f0;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #475569;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #818cf8;
+            background: rgba(129, 140, 248, 0.1);
+        }
