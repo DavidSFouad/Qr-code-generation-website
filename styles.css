@@ -975,3 +975,39 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="url"] {
             border-color: #818cf8;
             background: rgba(129, 140, 248, 0.1);
         }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(30, 41, 59, 0.8); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        
+        .form-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .qr-container {
+            flex: 1;
+            text-align: center;
+        }
+        
+        #placeHolder {
+            width: 200px; /* Smaller QR code size */
+            height: 200px;
+            margin: 20px auto;
+        }
+        
+        #qr-code {
+            display: none; /* Hidden initially */
+        }
+        
+        #downloadLink {
+            display: block;
+            margin-top: 10px;
+            color: #38bdf8;
+            text-decoration: none;
+        }
