@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - QR Genius</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation bar iframe -->
+    <iframe src="navbar.html" frameborder="0" style="width: 100%; height: 60px; position: fixed; top: 0; left: 0; z-index: 1000;"></iframe>
+
+    <!-- QR Pattern Background -->
+    <div class="qr-pattern"></div>
+
+    <!-- Signup Section -->
+    <div class="container">
+        <div class="auth-container">
+            <h1 class="section-title">Create Account</h1>
+            <form id="signupForm" class="auth-form" onsubmit="return validateForm(event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <i class="fas fa-eye-slash password-toggle" onclick="togglePassword('password')"></i>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                        <i class="fas fa-eye-slash password-toggle" onclick="togglePassword('confirmPassword')"></i>
+                    </div>
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </div>
+                <div class="auth-links">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer iframe -->
+    <iframe src="footer.html" frameborder="0" style="width: 100%; height: auto; border: none; overflow: hidden;" id="footer-iframe"></iframe>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            let isValid = true;
+            
+            // Email validation
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!email.value) {
+                emailError.textContent = 'Email is required';
+                isValid = false;
+            } else if (!emailRegex.test(email.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                isValid = false;
+            } else {
+                emailError.textContent = '';
+            }
+
+            // Password validation
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            
+            if (!password.value) {
+                passwordError.textContent = 'Password is required';
+                isValid = false;
+            } else if (!passwordRegex.test(password.value)) {
+                passwordError.textContent = 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character';
+                isValid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            // Confirm Password validation
+            const confirmPassword = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            
+            if (!confirmPassword.value) {
+                confirmPasswordError.textContent = 'Please confirm your password';
+                isValid = false;
+            } else if (confirmPassword.value !== password.value) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                isValid = false;
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+
+            if (isValid) {
+                // Here you would typically handle the form submission
+                console.log('Form is valid, ready to submit');
+            }
+
+            return isValid;
+        }
+
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        }
+
+        // Adjust footer iframe height dynamically
+        window.addEventListener('message', function(event) {
+            if (event.data.height) {
+                const footerIframe = document.getElementById('footer-iframe');
+                footerIframe.style.height = event.data.height + 'px';
+            }
+        });
+    </script>
+</body>
+</html> 
