@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - QR Genius</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation bar iframe -->
+    <iframe src="navbar.html" frameborder="0" style="width: 100%; height: 60px; position: fixed; top: 0; left: 0; z-index: 1000;"></iframe>
+
+    <!-- QR Pattern Background -->
+    <div class="qr-pattern"></div>
+
+    <!-- Profile Section -->
+    <div class="container">
+        <h1 class="section-title">Your Profile</h1>
+        
+        <div class="content-wrapper">
+            <div class="profile-container">
+                <!-- Profile Information -->
+                <div class="profile-section">
+                    <h2><i class="fas fa-user"></i> Personal Information</h2>
+                    <div class="profile-info">
+                        <div class="info-group">
+                            <label>Email</label>
+                            <p>user@example.com</p>
+                        </div>
+                        <div class="info-group">
+                            <label>Member Since</label>
+                            <p>January 2024</p>
+                        </div>
+                        <div class="button-container">
+                            <button class="btn-primary">Edit Profile</button>
+                            <button class="btn-secondary">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code History -->
+                <div class="profile-section">
+                    <h2><i class="fas fa-history"></i> QR Code History</h2>
+                    <div class="history-grid">
+                        <div class="history-item">
+                            <img src="placeholder-qr.png" alt="QR Code">
+                            <div class="history-details">
+                                <p class="history-type">URL</p>
+                                <p class="history-date">2024-03-15</p>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <img src="placeholder-qr.png" alt="QR Code">
+                            <div class="history-details">
+                                <p class="history-type">vCard</p>
+                                <p class="history-date">2024-03-14</p>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <img src="placeholder-qr.png" alt="QR Code">
+                            <div class="history-details">
+                                <p class="history-type">WiFi</p>
+                                <p class="history-date">2024-03-13</p>
+                                <button class="btn-secondary">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer iframe -->
+    <iframe src="footer.html" frameborder="0" style="width: 100%; height: auto; border: none; overflow: hidden;" id="footer-iframe"></iframe>
+
+    <script>
+        // Adjust footer iframe height dynamically
+        window.addEventListener('message', function(event) {
+            if (event.data.height) {
+                const footerIframe = document.getElementById('footer-iframe');
+                footerIframe.style.height = event.data.height + 'px';
+            }
+        });
+    </script>
+</body>
+</html> 
