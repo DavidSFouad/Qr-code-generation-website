@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi QR Code Generator - QR Genius</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Navigation bar iframe -->
+    <iframe src="navbar.html" frameborder="0" style="width: 100%; height: 60px; position: fixed; top: 0; left: 0; z-index: 1000;"></iframe>
+
+    <!-- QR pattern background -->
+    <div class="qr-pattern"></div>
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <div class="form-container">
+            <h1 class="section-title">Wi-Fi QR Code Generator</h1>
+            <form id="wifiForm">
+                <div class="form-group">
+                    <label for="ssid">Network SSID</label>
+                    <input type="text" id="ssid" name="ssid" required>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="hidden-network" name="hidden-network">
+                    <label for="hidden-network">Hidden Network</label>
+                </div>
+                <div class="form-group">
+                    <label for="password">Network Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="encryption">Encryption Type</label>
+                    <select id="encryption" name="encryption">
+                        <option value="WPA">WPA/WPA2</option>
+                        <option value="WEP">WEP</option>
+                        <option value="nopass">No Encryption</option>
+                    </select>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="btn-primary" onclick="generateQRCode()">Generate QR Code</button>
+                </div>
+            </form>
+        </div>
+        <div class="qr-container">
+            <div id="qr-code"></div>
+            <a id="downloadLink" href="#" download="wifi-qr-code.png" style="display: none;">
+                <button class="btn-primary">Download QR Code</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer iframe -->
+    <iframe src="footer.html" frameborder="0" style="width: 100%; height: auto; border: none; overflow: hidden;" id="footer-iframe"></iframe>
+
+    <script>
+        function generateQRCode() {
+    const ssid = document.getElementById('ssid').value;
+    const password = document.getElementById('password').value;
+    const encryption = document.getElementById('encryption').value;
+    const isHiddenNetwork = document.getElementById('hidden-network').checked;
+
+    if (ssid === "" || (encryption !== "nopass" && password === "")) {
+        alert("Please fill in all the fields!");
+        return;
+    }
+
+    let wifiString = `WIFI:T:${encryption};S:${ssid};P:${password};;`;
+
+    if (isHiddenNetwork) {
+        wifiString = `WIFI:T:${encryption};S:${ssid};P:${password};H:true;;`;
+    } else if (encryption === "nopass") {
+        wifiString = `WIFI:T:nopass;S:${ssid};;`;
+    }
+
+    const qrCodeContainer = document.getElementById('qr-code');
+    qrCodeContainer.innerHTML = "";
+
+    const canvas = document.createElement("canvas");
+
+    QRCode.toCanvas(canvas, wifiString, { width: 200, height: 200 }, function (error) {
+        if (error) {
+            console.error(error);
+            alert("Error generating QR code");
+            return;
+        }
+
+        qrCodeContainer.appendChild(canvas);
+        qrCodeContainer.style.display = "block";
+        // Enable the download button
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.style.display = "block";
+        downloadLink.href = canvas.toDataURL("image/png");
+    });
+}
+
+    
+        // Adjust footer iframe height dynamically
+        window.addEventListener('message', function(event) {
+            if (event.data.height) {
+                const footerIframe = document.getElementById('footer-iframe');
+                footerIframe.style.height = event.data.height + 'px';
+            }
+        });
+    </script>
+    
+</body>
+</html>

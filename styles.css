@@ -1011,3 +1011,56 @@ input[type="text"], input[type="tel"], input[type="email"], input[type="url"] {
             color: #38bdf8;
             text-decoration: none;
         }
+        /* Content wrapper for form and QR code */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(30, 41, 59, 0.8); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.form-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.qr-container {
+    flex: 1;
+    text-align: center;
+}
+
+#qr-code {
+    margin: 20px auto;
+}
+
+#downloadLink {
+    display: block;
+    margin-top: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #475569;
+    border-radius: 5px;
+}
